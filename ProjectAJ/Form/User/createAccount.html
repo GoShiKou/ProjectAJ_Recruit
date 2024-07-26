@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/createAccount.css">
+    <script src="../../js/createAccount.js"></script>
+    <title>Create Account</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="user_input">
+            <button class="back-button" onclick="history.back()">← Back</button>
+            <h2>Create Account</h2>
+            <div class="input_id">
+                <h4>Login ID</h4>
+                <form autocomplete="off">
+                    <input type="text" name="id" id="id" placeholder="3文字以上、15文字以下で入力してください" autocomplete="off">
+                </form>
+            </div>
+            <div class="input_name">
+                <h4>User Name</h4>
+                <form autocomplete="off">
+                    <input type="text" name="username" id="username" placeholder="最大50文字入力してください" autocomplete="off">
+                </form>
+            </div>
+            <div class="input_pw">
+                <h4>Password</h4>
+                <form autocomplete="off">
+                    <input type="password" name="password" id="password" placeholder="6文字以上、15文字以下で入力してください。" autocomplete="off" onkeyup="checkPasswords()">
+                </form>
+            </div>
+            <div class="input_pw">
+                <h4>Confirm Password</h4>
+                <form autocomplete="off">
+                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="もう一度パスワードを入力してください" autocomplete="off" onkeyup="checkPasswords()">
+                </form>
+                <span id="message"></span>
+            </div>
+            <div class="input_email">
+                <h4>Email</h4>
+                <form autocomplete="off">
+                    <input type="email" name="email" id="email" placeholder="emailを入力してください" autocomplete="off">
+                </form>
+            </div>
+            <div class="input_ct">
+                <h4>Nationality</h4>
+                <select name="nationality" id="nationality" aria-placeholder="選択してください"></select>
+            </div>
+            <div class="submit">
+                <input type="submit" value="submit" onclick="saveAndRedirect()">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

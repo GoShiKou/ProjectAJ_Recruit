@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatECC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+    <link rel="stylesheet" href="styles/newProjectAjKwon.css">
+    <script src="js/loadNationalities.js" defer></script>
+    <script src="js/projectAjKwon.js"></script>
+</head>
+<body>
+    <nav class="nav-container" id ="navbar" style="color: white; font-weight: bold;">
+        <div class="nav-item" style="flex-grow: 2; font-size: 30px;">Project AJ</div>
+        <div class="nav-item">
+                <a href='./chatCommunity.html'><button class="chat-btn">Community</button></a>
+        </div>
+        <div class="nav-item">
+            <select id="language-selector" onchange="changeLanguage(this)">
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>  
+                <option value="my">မြန်မာစာ</option>
+                <option value="zh-TW">中文</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+        <!-- <div>  TODO:
+            ログインしたユーザ名を表示する</div>
+        -->
+        <div class="nav-item" style="font-size: 20px; margin-right: 30px; ">
+            <button onclick="showLogin()">Log in</button>
+        </div>
+    </nav>
+    <div class="background-container">
+    <header>
+        <div style="height: 200px; padding: 30px; text-align: center; align-items: center; font-size;">
+            <h1 style="font-size: 65px; color: tomato;"> Project AJ </h1>
+        </div>
+        <div class="search-container">
+            <form id="search-form" action="/search" method="GET">
+                <input type="text" id="searchInput" name="query" placeholder="Enter information you are looking for." class="search-input">
+                <button type="submit" class="search-button">Seach</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="menu-container">
+        <a class="menu-item" id="showContent1" href="#">
+            <i class="fa-solid fa-house-user"></i>
+            <p style="padding: 1px; font-size: 20px;">生活</p>
+        </a>
+        <a class="menu-item" id="showContent2" href="#">
+            <i class="fa-solid fa-building-columns"></i>
+            <p style="padding: 1px; font-size: 20px;">窓口</p>
+        </a>
+        <a class="menu-item" id="showContent3" href="#">
+            <i class="fa-solid fa-exclamation"></i>
+            <p style="padding: 1px; font-size: 20px;">トラブル</p>
+        </a>
+        <a class="menu-item" id="contact_link" href="#">
+            <i class="fa-solid fa-headset"></i>
+            <p style="padding: 1px; font-size: 20px;">お問い合わせ</p>
+        </a>
+    </div>
+
+    <div class="menu-content" id="menuContent" style="text-align: center; font-size: 20px; color: white;">
+        <div class="content-detail" id="detail1">111</div>
+        <div class="content-detail" id="detail2">222</div>
+        <div class="content-detail" id="detail3">333</div>
+    </div>
+
+    
+
+    <div id ="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <div class="login">
+                <h1 style="text-align: center; color:tomato; font-size: 50px;">Log-in</h1>
+                <div class="login_id">
+                    <h4>ID</h4>
+                    <form autocomplete="off">
+                    <input type="id" name="" id="" placeholder="ID" autocomplete="off">
+                </form>
+                </div>
+                <div class="login_pw">
+                    <h4>Password</h4>
+                    <input type="password" name="" id="" placeholder="Password" autocomplete="off">
+                </div>
+                <div class="login_etc">
+                    <div class="checkbox">
+                        <input type="checkbox" name="" id=""> ログイン状態を保持
+                    </div>
+                    <div class="forgot_pw">
+                        <a href="">パスワード忘れた方はこちら</a>
+                    </div>
+                </div>  
+
+                <!-- TODO:国籍選択セレクト実装 -->
+                <div class="submit">
+                    <input type="submit" value="Log In">
+                </div>
+                <div id="create_account">
+                    <a href="javascript:void(0)" onclick="showCreateAccount()" style="color: tomato;">アカウント生成</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Create Account Modal -->
+    <div id="createAccountModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCreateAccount()">&times;</span>
+            <div class="user_input">
+                <h3 style="text-align: center; color:tomato; font-size: 50px; padding: 0; margin: 0;">Create Account</h3>
+                <div class="input_id">
+                    <h4>Login ID</h4>
+                    <form autocomplete="off">
+                        <input type="text" name="id" id="id" placeholder="3文字以上、15文字以下で入力してください" autocomplete="off">
+                    </form>
+                </div>
+                <div class="input_name">
+                    <h4>User Name</h4>
+                    <form autocomplete="off">
+                        <input type="text" name="username" id="username" placeholder="最大50文字入力してください" autocomplete="off">
+                    </form>
+                </div>
+                <div class="input_pw">
+                    <h4>Password</h4>
+                    <form autocomplete="off">
+                        <input type="password" name="password" id="password" placeholder="6文字以上、15文字以下で入力してください。" autocomplete="off" onkeyup="checkPasswords()">
+                    </form>
+                </div>
+                <div class="input_pw">
+                    <h4>Confirm Password</h4>
+                    <form autocomplete="off">
+                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="もう一度パスワードを入力してください" autocomplete="off" onkeyup="checkPasswords()">
+                    </form>
+                    <span id="message"></span>
+                </div>
+                <div class="input_email">
+                    <h4>Email</h4>
+                    <form autocomplete="off">
+                        <input type="email" name="email" id="email" placeholder="emailを入力してください" autocomplete="off">
+                    </form>
+                </div>
+                <div class="input_ct">
+                    <h4>Nationality</h4>
+                    <select name="nationality" id="nationality" aria-placeholder="選択してください"></select>
+                </div>
+                <div class="submit">
+                    <input type="submit" value="submit" onclick="saveAndShowConfirm()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+       <!-- Account Confirm Modal -->
+       <div id="accountConfirmModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAccountConfirm()">&times;</span>
+            <div class="user_input">
+                <h2>Account Confirm</h2>
+                <h4>ID : <span id="displayID"></span></h4>
+                <h4>User Name : <span id="displayUsername"></span></h4>
+                <div class="submit">
+                    <input type="submit" value="submit">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div id="button-container" class="button-container"></div>
+    <div id="content1" class="content-section"></div>
+    <div id="content2" class="content-section"></div>
+    <div id="content3" class="content-section"></div> -->
+
+
+    <!-- <div class="card-container">
+        <section id="cards-section" class="cards-section">
+            <div class="card">
+                <h3>生活</h3>
+                <p>生活に関する情報を提供します。役立つヒントやアドバイスをここで見つけてください。</p>
+            </div>
+            <div class="card">
+                <h3>窓口</h3>
+                <p>各種窓口へのアクセス方法や連絡先情報を提供します。</p>
+            </div>
+            <div class="card">
+                <h3>トラブル</h3>
+                <p>トラブルシューティングガイドとサポートを提供します。</p>
+            </div>
+            <div class="card">
+                <h3>Chat Community</h3>
+                <p>御互い日本語の言葉交換できる環境</p>
+            </div>
+        </section>
+    </div>
+         -->
+        <footer>
+                <a href="privacy.html"><i class="fa-solid fa-shield-halved" style="font-size: 50px;"></i></a>
+                <a href="https://www.facebook.com"><i class="fa-brands fa-facebook" style="font-size: 50px;"></i></a>
+                <a href="https://www.twitter.com"><i class="fa-brands fa-x-twitter" style="font-size: 50px;"></i></a>
+                <div class="footer_border">
+                <p>&copy; 2024 ECCcomp SE2A chat ecc ProjectAj Hc Gs Ym Ku Kd</p>
+                </div>
+        </footer>
+        
+    </div>
+
+    
+
+
+</body>
+</html>

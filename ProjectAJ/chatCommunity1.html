@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Community</title>
+    <link rel="stylesheet" href="styles/chatCommunity1.css">
+</head>
+<body>
+    <header>
+        <h1>Chat Community</h1>
+        <input type="text" id="searchInput" placeholder="探したい言葉を登録" oninput="searchPosts()">
+        <button onclick="searchPosts()">検索</button>
+        <p id="searchMessage" style="display:none;">検索結果がありません</p>
+    </header>
+    <main>
+        <section class="post-section">
+            <div class="new-post">
+                <textarea id="postInput" placeholder="ここに内容を登録"></textarea>
+                <div class="audio-controls">
+                    <button id="recordButton" class="record-button" onclick="toggleRecording()">🎙️録音</button>
+                    <button id="deleteButton" class="control-button" onclick="deleteAudio()" disabled>🗑️削除</button>
+                    <audio id="audioPreview" controls style="display: none; margin: 0 10px;"></audio>
+                </div>
+                <button class="post-button" onclick="postMessage()">投稿</button>
+            </div>
+        </section>
+        <section class="feed-section">
+            <h2>みんなの話題</h2>
+            <div id="postFeed"></div>
+        </section>
+        <aside>
+            <h2>人気の投稿</h2>
+            <div id="popularPosts"></div>
+        </aside>
+    </main>
+    <script src="./js/ChatCommunity.js"></script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+body {
+    margin: auto;
+    font-family: "Noto Sans JP", sans-serif;
+    zoom: 0.8;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: chocolate;
+}
+
+.nav-container {
+    display: flex;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    height: 85px;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    top: -85px;
+    left: 0;
+    width: 100%;
+    transition: top 0.4s;
+    z-index: 1;
+}
+
+.nav-container.visible {
+    top: 0;
+}
+
+.nav-container button {
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    appearance: none;
+    color: tomato;
+}
+
+.nav-item {
+    padding: 15px;
+}
+
+.nav-item #language-selector {
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    appearance: none;
+    color: tomato;
+}
+
+.chat-btn {
+    width: 200px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    color: white;
+    border-radius: 15px;
+}
+
+.background-container {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@keyframes fadeInUsername {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.username {
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    z-index: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadeInUsername 2s forwards;
+}
+
+
+.username-text {
+    color: tomato;
+}
+
+.user_container {
+    animation: fadeInUserContainer 1s forwards;
+    opacity: 0;
+    position: fixed;
+    top: 130px;
+    right: 15px;
+}
+
+.user-item {
+    display: flex;
+    align-items: center;
+}
+
+.user-item button {
+    font-size: 25px;
+    width: 130px;
+    height: 130px;
+    border: none;
+    border-radius: 50%;
+    background-color: #f57f31;
+    color: white;
+    margin-right: 30px;
+}
+
+.user-item button:hover {
+    background-color: chocolate;
+    animation: buttonHover 0.15s forwards;
+}
+
+@keyframes fadeInUserContainer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInHeader {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header h1 {
+    animation: fadeInHeader 0.5s forwards;
+    opacity: 0;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 70%;
+    height: 150px;
+    animation: fadeInHeader 0.5s forwards 0.5s;
+    opacity: 0;
+}
+
+.search-container input {
+    margin-right: 10px;
+    width: 400px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1.5px solid black;
+    padding: 0 15px;
+}
+
+.search-button {
+    width: 150px;
+    height: 60px;
+    font-size: 20px;
+    background: #f57f31;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.search-button:hover {
+    background-color: chocolate;
+    animation: buttonHover 0.2s forwards;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
+    background-color: #f57f31;
+    margin: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: fadeInMenu 1s forwards;
+    font-size: 24px;
+    transition: transform 0.05s, background-color 0.3s;
+}
+
+.menu-item:hover {
+    background-color: chocolate;
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.menu-item:hover {
+    transform: scale(1.1);
+    background-color: chocolate;
+}
+
+.menu-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.menu-item:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.menu-item:nth-child(3) {
+    animation-delay: 0.1s;
+}
+
+.menu-item:nth-child(4) {
+    animation-delay: 0.1s;
+}
+
+.menu-item i {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.menu-item p {
+    margin: 0;
+    font-size: 20px;
+}
+
+@keyframes contentFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.menu-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+}
+
+.content-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 15%;
+    height: 150px;
+    background-color: #f57f31;
+    border-radius: 20px;
+    animation: contentFadeIn 3.0s forwards;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+@keyframes buttonHover {
+    0% { transform: scale(1); background-color: #f57f31; }
+    50% { transform: scale(1.05); background-color: chocolate; }
+    100% { transform: scale(1); background-color: #f57f31; }
+}
+
+/* Fade-in animation for the modal background */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Fade-out animation for the modal background */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Slide-down animation for the modal content */
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Slide-up animation for the modal content */
+@keyframes slideUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-50px); opacity: 0; }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s forwards;
+    zoom: 0.9;
+}
+
+.modal.fade-out {
+    animation: fadeOut 0.3s forwards;
+    display: none;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    animation: slideDown 0.3s forwards;
+    margin: auto;
+}
+
+.modal-content.slide-up {
+    animation: slideUp 0.3s forwards;
+    display: none;
+}
+
+.login_id input, .login_pw input {
+    width: 90%;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0 15px;
+    font-size: 20px;
+}
+
+.login_etc {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.forgot_pw a {
+    font-size: 15px;
+}
+
+#create_account {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 30px;
+}
+
+#create_account:hover {
+    color: chocolate;
+}
+
+#createAccountModal h4 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.input_name input, .input_id input, .input_pw input, .input_email input {
+    width: 90%;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0 15px;
+    font-size: 20px;
+}
+
+#create_account input {
+    color: black;
+}
+
+.submit {
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.submit input {
+    width: 80%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.submit input:hover {
+    background: chocolate;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    margin-left: 10px;
+}
+
+
+/* 추가할 CSS */
+#loginRequiredModal .modal-content {
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    animation: slideDown 0.3s forwards;
+    margin: auto;
+    text-align: center;
+}
+
+#loginRequiredModal .modal-content h2 {
+    color: tomato;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#loginRequiredModal .modal-content p {
+    font-size: 18px;
+    color: black;
+}
+
+
+
+@keyframes footerHover {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4);}
+    100% { transform: scale(1);}
+}
+
+footer {
+    border-top: 2px solid #f57f31;
+    margin-top: 200px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+footer i {
+    margin-top: 30px;
+    padding: 15px;
+    color: #f57f31;
+}
+
+footer i:hover {
+    animation: footerHover 0.5s forwards;
+}
+
+@media (max-width: 1200px) {
+    .modal-content {
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .search-container input {
+        width: 300px;
+    }
+
+    .search-button {
+        width: 100px;
+    }
+
+    .menu-item {
+        width: 100px;
+        height: 100px;
+    }
+
+    .menu-item i {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 100%;
+        max-width: 350px;
+        zoom: 1;
+    }
+
+    .search-container input {
+        width: 200px;
+    }
+
+    .search-button {
+        width: 80px;
+    }
+
+    .menu-item {
+        width: 80px;
+        height: 80px;
+    }
+
+    .menu-item i {
+        font-size: 30px;
+    }
+}
